@@ -26,7 +26,7 @@ app.route('/')
 fccTestingRoutes(app);
 
 // User routes
-userRoutes(app);
+app.use('/api', userRoutes);
     
 // 404 Not Found Middleware
 app.use(function(req, res, next) {
