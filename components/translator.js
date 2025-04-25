@@ -9,7 +9,11 @@ class Translator {
     this.americanToBritishSpelling = americanToBritishSpelling;
     this.americanToBritishTitles = americanToBritishTitles;
     this.britishOnly = britishOnly;
-    this.britishToAmericanSpelling = Object.fromEntries(Object.entries(americanToBritishSpelling).map(([k, v]) => [v, k]));
+    this.britishToAmericanSpelling = {};
+    Object.keys(americanToBritishSpelling).forEach(function(key) {
+      var value = americanToBritishSpelling[key];
+      this.britishToAmericanSpelling[value] = key;
+    }, this);
     this.britishToAmericanTitles = {};
     for (const [am, br] of Object.entries(americanToBritishTitles)) {
       this.britishToAmericanTitles[br] = am;
